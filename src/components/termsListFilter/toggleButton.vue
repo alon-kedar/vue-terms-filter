@@ -1,12 +1,14 @@
 <template>
-  <a href="#"
-     role="checkbox"
-     class="button toggle-button"
-     :class="{'is-selected': isSelected}"
-     @click="toggle($event)">
-    <i class="fa fa-check"></i>
-    <span v-html="text"></span>
-  </a>
+  <div>
+    <a href="#"
+       role="checkbox"
+       class="button toggle-button"
+       :class="{'is-selected': isSelected}"
+       @click="toggle($event)">
+      <i class="fa fa-check"></i>
+      <span v-html="text"></span>
+    </a>
+  </div>
 </template>
 <script>
   export default {
@@ -25,11 +27,11 @@
           selected: this.isSelected,
           value: this.value
         })
-      },
-      watch: {
-        selected: function (newVal) {
-          this.isSelected = newVal
-        }
+      }
+    },
+    watch: {
+      selected (newVal) {
+        this.isSelected = newVal
       }
     }
   }

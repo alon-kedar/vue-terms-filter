@@ -50,6 +50,7 @@
         })
       },
       clear () {
+        console.log('clear')
         this.selectedOptions = []
         this.$emit('change', {
           changed: null,
@@ -89,6 +90,14 @@
             label,
             selected: this.selectedOptions.includes(option)
           }
+        })
+      }
+    },
+    watch: {
+      filterText: function () {
+        console.log('filterrrrr')
+        this.$emit('filter', {
+          options: this.filteredOptions
         })
       }
     }

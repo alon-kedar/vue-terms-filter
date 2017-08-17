@@ -42,7 +42,7 @@
     position: relative;
   }
   .select-dropdown .select-dropdown-panel {
-    width: 760px !important;
+    width: 300px !important;
     max-width: 760px;
     position: absolute;
     top: calc(100% + 5px);
@@ -65,13 +65,11 @@
   }
   .select-dropdown .select-list {
     margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
+
   }
   .select-dropdown .select-item {
     flex-basis: 20%;
     margin-bottom: 1%;
-    justify-content: flex-start;
   }
   .select-dropdown .toggle-button {
     background: none;

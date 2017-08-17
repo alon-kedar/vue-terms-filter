@@ -4,6 +4,7 @@
     <hello></hello>
     <test :msg="'new test.vue message'"></test>
     <terms-list-filter></terms-list-filter>
+    <terms-root></terms-root>
   </div>
 </template>
 
@@ -12,11 +13,12 @@
 import Hello from './components/Hello'
 import Test from './components/test'
 import TermsListFilter from './components/termsListFilter/termsListFilter'
+import TermsRoot from './components/termsRoot/temsRoot'
 
 export default {
   name: 'app',
   components: {
-    Hello, Test, TermsListFilter
+    Hello, Test, TermsListFilter, TermsRoot
   }
 }
 </script>

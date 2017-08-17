@@ -14,6 +14,7 @@
           :options="options"
           :selected="selected"
           @change="onChange($event)"
+          @filter="onFilterChange($event)"
         >
         </select-list>
       </div>
@@ -41,21 +42,15 @@
         this.panelOpen = !this.panelOpen
       },
       onChange (event) {
-        this.setButtonText(event.selected)
-        this.$emit(event)
+        this.$emit('change', event)
+      },
+      onFilterChange (event) {
+        console.log('yo')
+        console.log(event)
+        this.setButtonText(event.options)
       },
       setButtonText (selectedOptions) {
-        if (selectedOptions.length === 0) {
-          this.buttonText = this.label + ' ' + this.placeholder
-        } else {
-          let text = this.placeholder.charAt(0).toUpperCase() + this.placeholder.slice(1) + ': ' + selectedOptions[0]
-
-          if (selectedOptions.length > 1) {
-            text += ' & ' + (selectedOptions.length - 1) + ' more'
-          }
-
-          this.buttonText = text
-        }
+        this.buttonText = 'count: ' + selectedOptions.length
       }
     }
   }
