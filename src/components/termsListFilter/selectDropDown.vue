@@ -4,8 +4,8 @@
        role="button"
        class="button is-primary"
        @click="toggle($event)"
+       v-text="buttonText"
     >
-      {{buttonText}}
     </a>
     <transition name="slide-fade">
       <div class="select-dropdown-panel card arrow-box" v-show="panelOpen">
@@ -32,8 +32,7 @@
     },
     data () {
       return {
-        panelOpen: true,
-        buttonText: this.label + ' ' + this.placeholder
+        panelOpen: true
       }
     },
     props: ['options', 'selected', 'label', 'placeholder'],
@@ -43,14 +42,11 @@
       },
       onChange (event) {
         this.$emit('change', event)
-      },
-      onFilterChange (event) {
-        console.log('yo')
-        console.log(event)
-        this.setButtonText(event.options)
-      },
-      setButtonText (selectedOptions) {
-        this.buttonText = 'count: ' + selectedOptions.length
+      }
+    },
+    computed: {
+      buttonText () {
+        return 'count: ' + this.options.length
       }
     }
   }

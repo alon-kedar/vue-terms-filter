@@ -1,24 +1,20 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <hello></hello>
-    <test :msg="'new test.vue message'"></test>
-    <terms-list-filter></terms-list-filter>
     <terms-root></terms-root>
+    <terms-list-filter></terms-list-filter>
   </div>
 </template>
 
 <script>
 
-import Hello from './components/Hello'
-import Test from './components/test'
 import TermsListFilter from './components/termsListFilter/termsListFilter'
-import TermsRoot from './components/termsRoot/temsRoot'
+import TermsRoot from './components/termsRoot/termsRoot'
 
 export default {
   name: 'app',
   components: {
-    Hello, Test, TermsListFilter, TermsRoot
+    TermsListFilter, TermsRoot
   }
 }
 </script>

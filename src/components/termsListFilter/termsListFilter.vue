@@ -3,11 +3,11 @@
     <toggle-button></toggle-button>
     <div class="nav-center">
       <select-drop-down
-        :options="brands"
-        :selected="selectedBrands"
+        :options="terms"
+        :selected="selectedTerms"
         @change="onChange($event)"
         label="Select"
-        placeholder="yo bike"
+        placeholder="None"
         class="nav-item"
       >
       </select-drop-down>
@@ -17,6 +17,7 @@
 
 
 <script>
+  import EventBus from './../../eventBus'
   import SelectDropDown from './selectDropDown'
   import ToggleButton from './toggleButton'
 
@@ -27,12 +28,17 @@
     },
     data () {
       return {
-        brands: ['asd', 'dewdw', 'bcwjn'],
-        selectedBrands: []
+        terms: [],
+        selectedTerms: []
       }
     },
     methods: {
       onChange (changed) {}
+    },
+    mounted () {
+      EventBus.$on('updateTerms', (terms) => {
+        this.terms = terms
+      })
     }
   }
 </script>

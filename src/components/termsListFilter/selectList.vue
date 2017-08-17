@@ -95,7 +95,6 @@
     },
     watch: {
       filterText: function () {
-        console.log('filterrrrr')
         this.$emit('filter', {
           options: this.filteredOptions
         })
