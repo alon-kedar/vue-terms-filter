@@ -30,7 +30,7 @@
       }
     },
     mounted () {
-      EventBus.$on('visibleOptionsUpdated' + this.id, (options) => {
+      EventBus.$on('updateTerms' + this.id, (options) => {
         this.filteredTermsCount = options.length
       })
     }

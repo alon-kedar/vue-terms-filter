@@ -98,7 +98,7 @@
         handler: function () {
           this.visibleOptions = this.filteredOptions.map((o) => o.value)
           console.log(this.visibleOptions)
-          EventBus.$emit('visibleOptionsUpdated' + this.id, this.visibleOptions)
+          EventBus.$emit('updateTerms' + this.id, this.visibleOptions)
         },
         deep: true
       }
