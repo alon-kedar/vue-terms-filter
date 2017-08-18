@@ -8,6 +8,7 @@
   import EventBus from './../../eventBus'
 
   export default {
+    props: ['id'],
     name: 'terms-root',
     data () {
       return {
@@ -25,7 +26,7 @@
     watch: {
       inputText: function (text) {
         this.terms = this.inputText.split('\n').map((t) => t.trim()).filter((t) => t !== '')
-        EventBus.$emit('updateTerms', this.terms)
+        EventBus.$emit('updateTerms' + this.id, this.terms)
       }
     }
   }

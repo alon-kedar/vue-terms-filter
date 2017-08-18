@@ -7,6 +7,7 @@
           ref="selectList"
           :options="options"
           :selected="selected"
+          :id="id"
         >
         </select-list>
       </div>
@@ -25,10 +26,10 @@
     },
     data () {
       return {
-        panelOpen: true
+        panelOpen: false
       }
     },
-    props: ['options', 'selected', 'label', 'placeholder'],
+    props: ['options', 'selected', 'label', 'placeholder', 'id'],
     methods: {
       togglePanel () {
         this.panelOpen = !this.panelOpen
@@ -36,10 +37,4 @@
     }
   }
 </script>
-
-
-<style>
-
-</style>
-
 

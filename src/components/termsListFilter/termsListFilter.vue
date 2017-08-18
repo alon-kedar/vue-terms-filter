@@ -1,16 +1,15 @@
 <template>
   <div>
-    <div class="nav-center">
-      <select-drop-down
-        :options="terms"
-        :selected="selectedTerms"
-        @change="onChange($event)"
-        label="Select"
-        placeholder="None"
-        class="nav-item"
-      >
-      </select-drop-down>
-    </div>
+    <select-drop-down
+      :options="terms"
+      :selected="selectedTerms"
+      :id="id"
+      @change="onChange($event)"
+      label="Select"
+      placeholder="None"
+      class=""
+    >
+    </select-drop-down>
   </div>
 </template>
 
@@ -24,6 +23,7 @@
     components: {
       SelectDropDown, ToggleButton
     },
+    props: ['id'],
     data () {
       return {
         terms: [],
@@ -34,8 +34,9 @@
       onChange (changed) {}
     },
     mounted () {
-      EventBus.$on('updateTerms', (terms) => {
+      EventBus.$on('updateTerms' + (this.id - 1), (terms) => {
         this.terms = terms
+        EventBus.$emit('updateTerms' + (this.id), this.terms)
       })
     }
   }
@@ -45,13 +46,20 @@
   .select-dropdown {
     position: relative;
   }
+  .select-dropdown {
+    position: relative;
+  }
   .select-dropdown .select-dropdown-panel {
     width: 360px !important;
-    max-width: 760px;
-    position: absolute;
-    top: calc(100% + 5px);
-    left: calc(50%);
-    transform: translateX(-50%);
+    margin: auto;
+    /*max-width: 760px;*/
+    /*position: absolute;*/
+    /*top: calc(100% + 5px);*/
+    /*left: calc(50%);*/
+    /*transform: translateX(-50%);*/
+  }
+  .select-dropdown .button.is-primary {
+    margin: 15px 0;
   }
   .select-dropdown .select-list-wrapper {
     padding: 10px 10px;
@@ -61,7 +69,7 @@
     margin-bottom: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
   .select-dropdown .select-list-actions .button.is-link {
     color: #7a7a7a;
@@ -70,7 +78,6 @@
   }
   .select-dropdown .select-list {
     margin-top: 10px;
-
   }
   .select-dropdown .select-item {
     flex-basis: 20%;
@@ -95,8 +102,8 @@
     opacity: 1;
   }
   .select-dropdown .toggle-button .fa {
-    position: absolute;
-    left: 7px;
+    /*position: absolute;*/
+    /*left: 7px;*/
     font-size: 12px;
     opacity: 0;
     transition: opacity .1s ease-in;

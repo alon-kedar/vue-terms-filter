@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <terms-root></terms-root>
-    <terms-list-filter></terms-list-filter>
+    <terms-root :id="0"></terms-root>
+    <terms-list-filter :id="1"></terms-list-filter>
+    <terms-list-filter :id="2"></terms-list-filter>
   </div>
 </template>
 

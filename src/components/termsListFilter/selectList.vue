@@ -1,11 +1,11 @@
 <template>
   <div class="select-list-wrapper">
     <header class="select-list-actions is-clearfix">
-      <p class="control" v-if="selectedOptions.length > 0">
-        <a href="#" role="button" class="button is-link" @click="remove"> Remove selected </a>
-      </p>
       <p class="control">
         <input class="input" v-model="filterText" type="text" placeholder="Filter list">
+      </p>
+      <p class="control" v-if="selectedOptions.length > 0">
+        <a href="#" role="button" class="button is-link" @click="remove"> Remove selected </a>
       </p>
     </header>
     <div class="select-list" v-if="filteredOptions.length > 0">
@@ -37,7 +37,7 @@
         selectedOptions: this.selected
       }
     },
-    props: ['options', 'selected'],
+    props: ['options', 'selected', 'id'],
     methods: {
       onToggle (option) {
         if (option.selected) {
@@ -52,6 +52,7 @@
       },
       remove () {
         EventBus.$emit('removeTerms', this.selectedOptions)
+        this.selectedOptions = []
       }
     },
     computed: {
@@ -95,7 +96,9 @@
     watch: {
       thingsToWatch: {
         handler: function () {
-          EventBus.$emit('visibleOptionsUpdated', this.filteredOptions.map((o) => o.value))
+          let visibleOptions = this.filteredOptions.map((o) => o.value)
+          EventBus.$emit('visibleOptionsUpdated', visibleOptions)
+          EventBus.$emit('updateTerms' + this.id, visibleOptions)
         },
         deep: true
       }
