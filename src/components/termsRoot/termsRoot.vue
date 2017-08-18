@@ -1,6 +1,6 @@
 <template>
   <div>
-    <textarea cols="54" rows="10" v-model="inputText" placeholder="add terms"></textarea>
+    <textarea cols="54" rows="10" v-model="inputText" placeholder=" Add terms"></textarea>
   </div>
 </template>
 
@@ -11,22 +11,20 @@
     name: 'terms-root',
     data () {
       return {
-        inputText: '',
-        terms: []
+        inputText: ''
       }
     },
     mounted () {
       EventBus.$on('removeTerms', (terms) => {
         let termsSet = new Set(this.terms)
         terms.forEach((t) => termsSet.delete(t))
-        console.log(termsSet)
         this.terms = Array.from(termsSet)
         this.inputText = this.terms.join('\n')
       })
     },
     watch: {
-      inputText: (text) => {
-        this.terms = text.split('\n').map((t) => t.trim()).filter((t) => t !== '')
+      inputText: function (text) {
+        this.terms = this.inputText.split('\n').map((t) => t.trim()).filter((t) => t !== '')
         EventBus.$emit('updateTerms', this.terms)
       }
     }
