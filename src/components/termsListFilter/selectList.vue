@@ -2,7 +2,7 @@
   <div class="select-list-wrapper">
     <header class="select-list-actions is-clearfix">
       <p class="control" v-if="selectedOptions.length > 0">
-        <a href="#" role="button" class="button is-link" @click="clear"> Clear selected </a>
+        <a href="#" role="button" class="button is-link" @click="remove"> Remove selected </a>
       </p>
       <p class="control">
         <input class="input" v-model="filterText" type="text" placeholder="Filter list">
@@ -50,12 +50,8 @@
           selected: this.selectedOptions
         })
       },
-      clear () {
-        this.selectedOptions = []
-        this.$emit('change', {
-          changed: null,
-          selected: []
-        })
+      remove () {
+        EventBus.$emit('removeTerms', this.selectedOptions)
       }
     },
     computed: {
@@ -99,8 +95,6 @@
     watch: {
       thingsToWatch: {
         handler: function () {
-          console.log('a thing changed')
-          console.log(this.filteredOptions)
           EventBus.$emit('visibleOptionsUpdated', this.filteredOptions.map((o) => o.value))
         },
         deep: true

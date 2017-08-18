@@ -1,6 +1,5 @@
 <template>
   <div>
-    <toggle-button></toggle-button>
     <div class="nav-center">
       <select-drop-down
         :options="terms"
@@ -47,7 +46,7 @@
     position: relative;
   }
   .select-dropdown .select-dropdown-panel {
-    width: 300px !important;
+    width: 360px !important;
     max-width: 760px;
     position: absolute;
     top: calc(100% + 5px);
@@ -67,6 +66,7 @@
   .select-dropdown .select-list-actions .button.is-link {
     color: #7a7a7a;
     text-decoration: none;
+    margin-right: 10px !important
   }
   .select-dropdown .select-list {
     margin-top: 10px;
