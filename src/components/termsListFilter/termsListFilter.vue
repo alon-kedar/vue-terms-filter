@@ -38,9 +38,6 @@
         this.terms = terms
         EventBus.$emit('updateTerms' + this.id, this.terms)
       })
-      EventBus.$on('filterWasAdded' + (this.id + 1), () => {
-        EventBus.$emit('updateTerms' + this.id, this.terms)
-      })
       EventBus.$emit('filterWasAdded' + this.id, {})
     }
   }

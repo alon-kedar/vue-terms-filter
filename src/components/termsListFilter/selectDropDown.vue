@@ -1,6 +1,6 @@
 <template>
   <div class="select-dropdown">
-    <terms-filter-toggle @toggle="togglePanel($event)"></terms-filter-toggle>
+    <terms-filter-toggle :id="id" @toggle="togglePanel($event)"></terms-filter-toggle>
     <transition name="slide-fade">
       <div class="select-dropdown-panel card arrow-box" v-show="panelOpen">
         <select-list

@@ -13,6 +13,7 @@
 
   export default {
     name: 'terms-filter-toggle',
+    props: ['id'],
     data () {
       return {
         filteredTermsCount: 0
@@ -29,7 +30,7 @@
       }
     },
     mounted () {
-      EventBus.$on('visibleOptionsUpdated', (options) => {
+      EventBus.$on('visibleOptionsUpdated' + this.id, (options) => {
         this.filteredTermsCount = options.length
       })
     }
