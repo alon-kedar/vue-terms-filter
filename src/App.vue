@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <terms-root></terms-root>
     <terms-list-filter></terms-list-filter>
   </div>

@@ -18,11 +18,12 @@
         @toggle="onToggle($event)"
       ></toggle-button>
     </div>
-    <div v-else>No items to display</div>
+    <div v-else>No terms to display</div>
   </div>
 </template>
 
 <script>
+  import EventBus from './../../eventBus'
   import ToggleButton from './toggleButton'
 
   export default {
@@ -50,7 +51,6 @@
         })
       },
       clear () {
-        console.log('clear')
         this.selectedOptions = []
         this.$emit('change', {
           changed: null,
@@ -91,13 +91,19 @@
             selected: this.selectedOptions.includes(option)
           }
         })
+      },
+      thingsToWatch () {
+        return [{a: this.filterText}, {b: this.options}]
       }
     },
     watch: {
-      filterText: function () {
-        this.$emit('filter', {
-          options: this.filteredOptions
-        })
+      thingsToWatch: {
+        handler: function () {
+          console.log('a thing changed')
+          console.log(this.filteredOptions)
+          EventBus.$emit('visibleOptionsUpdated', this.filteredOptions.map((o) => o.value))
+        },
+        deep: true
       }
     }
   }

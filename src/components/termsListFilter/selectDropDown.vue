@@ -1,20 +1,12 @@
 <template>
   <div class="select-dropdown">
-    <a href="#"
-       role="button"
-       class="button is-primary"
-       @click="toggle($event)"
-       v-text="buttonText"
-    >
-    </a>
+    <terms-filter-toggle @toggle="togglePanel($event)"></terms-filter-toggle>
     <transition name="slide-fade">
       <div class="select-dropdown-panel card arrow-box" v-show="panelOpen">
         <select-list
           ref="selectList"
           :options="options"
           :selected="selected"
-          @change="onChange($event)"
-          @filter="onFilterChange($event)"
         >
         </select-list>
       </div>
@@ -24,11 +16,12 @@
 
 <script>
   import SelectList from './selectList'
+  import TermsFilterToggle from './termsFilterToggle'
 
   export default {
     name: 'select-drop-down',
     components: {
-      SelectList
+      SelectList, TermsFilterToggle
     },
     data () {
       return {
@@ -37,16 +30,8 @@
     },
     props: ['options', 'selected', 'label', 'placeholder'],
     methods: {
-      toggle () {
+      togglePanel () {
         this.panelOpen = !this.panelOpen
-      },
-      onChange (event) {
-        this.$emit('change', event)
-      }
-    },
-    computed: {
-      buttonText () {
-        return 'count: ' + this.options.length
       }
     }
   }

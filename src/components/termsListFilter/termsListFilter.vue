@@ -15,7 +15,6 @@
   </div>
 </template>
 
-
 <script>
   import EventBus from './../../eventBus'
   import SelectDropDown from './selectDropDown'
