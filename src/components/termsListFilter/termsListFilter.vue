@@ -36,8 +36,12 @@
     mounted () {
       EventBus.$on('updateTerms' + (this.id - 1), (terms) => {
         this.terms = terms
-        EventBus.$emit('updateTerms' + (this.id), this.terms)
+        EventBus.$emit('updateTerms' + this.id, this.terms)
       })
+      EventBus.$on('filterWasAdded' + (this.id + 1), () => {
+        EventBus.$emit('updateTerms' + this.id, this.terms)
+      })
+      EventBus.$emit('filterWasAdded' + this.id, {})
     }
   }
 </script>
@@ -58,7 +62,8 @@
     /*left: calc(50%);*/
     /*transform: translateX(-50%);*/
   }
-  .select-dropdown .button.is-primary {
+  .select-dropdown .button.is-primary,
+  .button.is-info {
     margin: 15px 0;
   }
   .select-dropdown .select-list-wrapper {

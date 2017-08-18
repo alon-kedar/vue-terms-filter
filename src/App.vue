@@ -1,20 +1,37 @@
 <template>
   <div id="app">
     <terms-root :id="0"></terms-root>
-    <terms-list-filter :id="1"></terms-list-filter>
-    <terms-list-filter :id="2"></terms-list-filter>
+    <terms-list-filter v-for="count in filtersCount" :id="count"></terms-list-filter>
+    <button class="button is-info" @click="add()">Add filter</button>
   </div>
 </template>
 
 <script>
 
+import EventBus from './eventBus'
 import TermsListFilter from './components/termsListFilter/termsListFilter'
 import TermsRoot from './components/termsRoot/termsRoot'
 
 export default {
   name: 'app',
+  data () {
+    return {
+      filtersCount: 1,
+      filteredTerms: []
+    }
+  },
+  methods: {
+    add () {
+      this.filtersCount++
+    }
+  },
   components: {
     TermsListFilter, TermsRoot
+  },
+  mounted() {
+    EventBus.$on('updateTerms' + this.filtersCount, (terms) => {
+      this.filteredTerms = terms
+    })
   }
 }
 </script>

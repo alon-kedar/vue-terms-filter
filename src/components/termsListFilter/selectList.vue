@@ -96,12 +96,17 @@
     watch: {
       thingsToWatch: {
         handler: function () {
-          let visibleOptions = this.filteredOptions.map((o) => o.value)
-          EventBus.$emit('visibleOptionsUpdated', visibleOptions)
-          EventBus.$emit('updateTerms' + this.id, visibleOptions)
+          this.visibleOptions = this.filteredOptions.map((o) => o.value)
+          EventBus.$emit('visibleOptionsUpdated', this.visibleOptions)
+          EventBus.$emit('updateTerms' + this.id, this.visibleOptions)
         },
         deep: true
       }
+    },
+    mounted () {
+      EventBus.$on('filterWasAdded' + (this.id + 1), () => {
+        EventBus.$emit('updateTerms' + this.id, this.visibleOptions)
+      })
     }
   }
 </script>
