@@ -1,14 +1,14 @@
 <template>
   <div class="select-list-wrapper">
-    <button type="button"
-            v-clipboard:copy="selectedOptionsStr">Copy!</button>
     <header class="select-list-actions is-clearfix">
-      <p class="control">
+      <p>
         <input class="input" v-model="filterText" type="text" placeholder="Filter list">
       </p>
-      <p class="control" v-if="selectedOptions.length > 0">
-        <a href="#" role="button" class="button is-link" @click="remove"> Remove selected </a>
-      </p>
+      <button type="button" class="button is-link" :disabled="selectedOptions.length === 0"
+              v-clipboard:copy="selectedOptionsStr">Copy</button>
+      <button type="button" class="button is-link" :disabled="selectedOptions.length === 0"
+              v-clipboard:copy="selectedOptionsStr"
+              @click="remove()">Cut</button>
     </header>
     <div class="select-list" v-if="filteredOptions.length > 0">
       <form>

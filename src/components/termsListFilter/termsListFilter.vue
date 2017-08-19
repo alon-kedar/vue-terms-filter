@@ -76,7 +76,7 @@
   .select-dropdown .select-list-actions .button.is-link {
     color: #7a7a7a;
     text-decoration: none;
-    margin-right: 10px !important
+    margin-left: 10px !important
   }
   .select-dropdown .select-list {
     margin-top: 10px;

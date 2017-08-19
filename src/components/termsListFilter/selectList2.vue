@@ -4,9 +4,7 @@
       <p class="control">
         <input class="input" v-model="filterText" type="text" placeholder="Filter list">
       </p>
-      <p class="control" v-if="selectedOptions.length > 0">
-        <a href="#" role="button" class="button is-link" @click="remove"> Remove selected </a>
-      </p>
+
     </header>
     <div class="select-list" v-if="filteredOptions.length > 0">
       <toggle-button
