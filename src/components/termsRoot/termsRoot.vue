@@ -34,10 +34,10 @@
         terms.forEach((t) => termsSet.delete(t))
         this.terms = Array.from(termsSet)
         this.inputText = this.terms.join('\n')
+        EventBus.$emit('updateTerms' + this.id, this.terms)
       })
     },
     computed: {
-
       terms: {
         get () {
           return Array.from(new Set(this.inputText.split('\n').map((t) => t.trim()).filter((t) => t !== '')))
@@ -49,6 +49,7 @@
     },
     watch: {
       inputText: function (text) {
+        console.log(this.id)
         EventBus.$emit('updateTerms' + this.id, this.terms)
       }
     }

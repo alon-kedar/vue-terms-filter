@@ -33,23 +33,13 @@
     data () {
       return {
         filterText: '',
+        options: [],
         selectedOptions: [],
         copyData: 'some data'
       }
     },
-    props: ['options', 'selected', 'id'],
+    props: ['id'],
     methods: {
-      onToggle (option) {
-        if (option.selected) {
-          this.selectedOptions.push(option.value)
-        } else {
-          this.selectedOptions.splice(this.selectedOptions.indexOf(option.value), 1)
-        }
-        this.$emit('change', {
-          changed: option,
-          selected: this.selectedOptions
-        })
-      },
       remove () {
         EventBus.$emit('removeTerms', this.selectedOptions)
         this.selectedOptions = []
@@ -71,7 +61,13 @@
     },
     mounted () {
       EventBus.$on('filterWasAdded' + (this.id + 1), () => {
+        console.log(this.id)
         EventBus.$emit('updateTerms' + this.id, this.filteredOptions)
+      })
+      EventBus.$on('updateTerms' + (this.id - 1), (options) => {
+        console.log(this.id)
+        this.options = options
+        EventBus.$emit('updateTerms' + (this.id), this.filteredOptions)
       })
     }
   }

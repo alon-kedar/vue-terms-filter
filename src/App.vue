@@ -8,7 +8,6 @@
 
 <script>
 
-import EventBus from './eventBus'
 import TermsListFilter from './components/termsListFilter/termsListFilter'
 import TermsRoot from './components/termsRoot/termsRoot'
 
@@ -16,7 +15,7 @@ export default {
   name: 'app',
   data () {
     return {
-      filtersCount: 1,
+      filtersCount: 2,
       filteredTerms: []
     }
   },
@@ -27,11 +26,6 @@ export default {
   },
   components: {
     TermsListFilter, TermsRoot
-  },
-  mounted () {
-    EventBus.$on('updateTerms' + this.filtersCount, (terms) => {
-      this.filteredTerms = terms
-    })
   }
 }
 </script>

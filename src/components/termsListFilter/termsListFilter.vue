@@ -1,8 +1,6 @@
 <template>
   <div>
     <select-drop-down
-      :options="terms"
-      :selected="selectedTerms"
       :id="id"
       @change="onChange($event)"
       label="Select"
@@ -23,20 +21,10 @@
       SelectDropDown, ToggleButton
     },
     props: ['id'],
-    data () {
-      return {
-        terms: [],
-        selectedTerms: []
-      }
-    },
     methods: {
       onChange (changed) {}
     },
     mounted () {
-      EventBus.$on('updateTerms' + (this.id - 1), (terms) => {
-        this.terms = terms
-        EventBus.$emit('updateTerms' + this.id, this.terms)
-      })
       EventBus.$emit('filterWasAdded' + this.id, {})
     }
   }
