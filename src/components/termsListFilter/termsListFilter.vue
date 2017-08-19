@@ -7,7 +7,6 @@
       @change="onChange($event)"
       label="Select"
       placeholder="None"
-      class=""
     >
     </select-drop-down>
   </div>
@@ -59,8 +58,8 @@
     /*left: calc(50%);*/
     /*transform: translateX(-50%);*/
   }
-  .select-dropdown .button.is-primary,
-  .button.is-info {
+  .select-dropdown .btn.btn-success,
+  .btn.btn-primary {
     margin: 15px 0;
   }
   .select-dropdown .select-list-wrapper {

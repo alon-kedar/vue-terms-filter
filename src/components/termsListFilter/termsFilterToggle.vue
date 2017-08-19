@@ -1,7 +1,7 @@
 <template>
   <a href="#"
      role="button"
-     class="button is-primary"
+     class="btn btn-success"
      @click="toggle()"
      v-text="buttonText"
   >

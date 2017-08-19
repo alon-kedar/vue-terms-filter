@@ -2,7 +2,7 @@
   <div id="app">
     <terms-root :id="0"></terms-root>
     <terms-list-filter v-for="count in filtersCount" :id="count"></terms-list-filter>
-    <button class="button is-info" @click="add()">Add filter</button>
+    <button class="btn btn-primary" @click="add()">Add filter</button>
   </div>
 </template>
 
@@ -28,7 +28,7 @@ export default {
   components: {
     TermsListFilter, TermsRoot
   },
-  mounted() {
+  mounted () {
     EventBus.$on('updateTerms' + this.filtersCount, (terms) => {
       this.filteredTerms = terms
     })
@@ -43,6 +43,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 </style>

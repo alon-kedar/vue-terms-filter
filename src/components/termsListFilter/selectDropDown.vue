@@ -26,7 +26,7 @@
     },
     data () {
       return {
-        panelOpen: false
+        panelOpen: true
       }
     },
     props: ['options', 'selected', 'label', 'placeholder', 'id'],

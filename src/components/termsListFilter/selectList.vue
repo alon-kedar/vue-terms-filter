@@ -12,7 +12,7 @@
     </header>
     <div class="select-list" v-if="filteredOptions.length > 0">
       <form>
-        <select v-model="selectedOptions" class="multipass" v-bind:size="filteredOptions.length" multiple>
+        <select v-model="selectedOptions" class="multipass form-control" v-bind:size="filteredOptions.length" multiple>
           <option v-for="option in filteredOptions" v-text="option" v-bind:value="option"></option>
         </select>
       </form>
@@ -61,7 +61,6 @@
         return this.options.filter((option) => option.trim().toLocaleLowerCase().includes(filterText))
       },
       selectedOptionsStr () {
-        console.log(this.selectedOptions)
         return this.selectedOptions.join('\n')
       },
       thingsToWatch () {
