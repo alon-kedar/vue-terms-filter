@@ -59,11 +59,9 @@
     },
     mounted () {
       EventBus.$on('filterWasAdded' + (this.id + 1), () => {
-        console.log(this.id)
         EventBus.$emit('updateTerms' + this.id, this.filteredOptions)
       })
       EventBus.$on('updateTerms' + (this.id - 1), (options) => {
-        console.log(this.id)
         this.options = options
         EventBus.$emit('updateTerms' + (this.id), this.filteredOptions)
       })

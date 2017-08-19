@@ -49,7 +49,6 @@
     },
     watch: {
       inputText: function (text) {
-        console.log(this.id)
         EventBus.$emit('updateTerms' + this.id, this.terms)
       }
     }
@@ -70,7 +69,7 @@
     flex-direction: column;
     width: 60px;
     position: absolute;
-    right: 450px;
+    right: calc(50% - 222px);
     top: 70px;
   }
 
