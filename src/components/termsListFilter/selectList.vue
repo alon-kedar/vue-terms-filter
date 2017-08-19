@@ -62,20 +62,11 @@
       },
       selectedOptionsStr () {
         return this.selectedOptions.join('\n')
-      },
-      thingsToWatch () {
-        return [{a: this.filterText}, {b: this.filteredOptions}]
       }
     },
     watch: {
-      thingsToWatch: {
-        handler: function () {
-          EventBus.$emit('updateTerms' + this.id, this.filteredOptions)
-        },
-        deep: true
-      },
-      copyData: function () {
-        console.log(this.copyData)
+      filterText () {
+        EventBus.$emit('updateTerms' + this.id, this.filteredOptions)
       }
     },
     mounted () {
