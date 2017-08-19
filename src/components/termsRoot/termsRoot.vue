@@ -1,6 +1,6 @@
 <template>
   <div>
-    <textarea cols="54" rows="10" v-model="inputText" placeholder=" Add terms"></textarea>
+    <textarea cols="42" rows="10" v-model="inputText" placeholder=" Add terms"></textarea>
   </div>
 </template>
 

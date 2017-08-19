@@ -2,8 +2,11 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import VueClipboard from 'vue-clipboard2'
 
 Vue.config.productionTip = false
+
+Vue.use(VueClipboard)
 
 /* eslint-disable no-new */
 new Vue({
