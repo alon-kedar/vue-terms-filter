@@ -7,8 +7,7 @@
       <button type="button" class="button is-link" :disabled="selectedOptions.length === 0"
               v-clipboard:copy="selectedOptionsStr">Copy</button>
       <button type="button" class="button is-link" :disabled="selectedOptions.length === 0"
-              v-clipboard:copy="selectedOptionsStr"
-              @click="remove()">Cut</button>
+              v-clipboard:copy="selectedOptionsStr" v-clipboard:success="removeSelected">Cut</button>
     </header>
     <div class="select-list" v-if="filteredOptions.length > 0">
       <form>
@@ -40,9 +39,8 @@
     },
     props: ['id'],
     methods: {
-      remove () {
+      removeSelected () {
         EventBus.$emit('removeTerms', this.selectedOptions)
-        this.selectedOptions = []
       }
     },
     computed: {
